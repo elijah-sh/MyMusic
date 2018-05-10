@@ -1,15 +1,13 @@
-<!--  <iframe name="player" src="top.html" />
- -->     
-       <!--   <link th:src="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet"/> -->
+        
 <!-- 页面上的三个热搜之类 -->
-<script>
+<script >
 	function getHotSongLists(container){
 		$.ajax({
 	    	url: "/home/getHotSongLists",
 	    	type: "POST",
 	    	async: false,
 	    	success: function(data) {
-	    		container.html(data);
+	    		//container.html(data);
 	    	},
 	        error: function () {
 	        	alert("error");       
@@ -25,7 +23,7 @@
 	    	type: "POST",
 	    	async: false,
 	    	success: function(data) {
-	    		container.html(data);
+	    		//container.html(data);
 	    	},
 	        error: function () {
 	        	alert("error");       
@@ -41,7 +39,7 @@
 	    	type: "POST",
 	    	async: false,
 	    	success: function(data) {
-	    		container.html(data);
+	    	//	container.html(data);
 	    	},
 	        error: function () {
 	        	alert("error");       
@@ -51,9 +49,13 @@
 	}
 	
 	$(function(){
-	/* 	getHotSongLists($("#hot_songlists"));
+	  /* 	getHotSongLists($("#hot_songlists"));
 		getHotAlbums($("#hot_albums"));
-		getHotSongs($("#hot_songs")); */
+		getHotSongs($("#hot_songs"));  */
+		
+		/* getHotSongLists();
+		getHotAlbums();
+		getHotSongs();  */
 	});
 </script>
 <html>
@@ -64,6 +66,7 @@
 <body>
 			<div id="color">
 				<div class="center">
+				
 					<div class="center_hr"></div>
 					<div class="center_up">
 						<div class="center_up_up">
@@ -84,6 +87,8 @@
 							<!-- ajax获取热门歌单 -->
 						</div>
 					</div>
+					
+					
 					<div class="center_hr"></div>
 					<div class="center_center">
 						<div class="center_center_up">
@@ -104,7 +109,8 @@
 							
 							<!-- 热门专辑 -->
 							
-          			  <dl th:each="album : ${albumList}" >
+							<h1 th:text="${name}">hello world~~~~~~~</h1>
+          			  	 <dl th:each="album : ${albumList}" >
 							<dt>
 							<a href="#"> <img  th:src="${album.img}" width="140px" heigth="140px"
 									th:title="${album.name}" /></a> 
@@ -114,13 +120,11 @@
 							</dd>
 					  </dl>
 							
-							
-							
-							
-							
-							
 						</div>
 					</div>
+					
+					
+					
 					<div class="center_hr"></div>
 					<div class="center_down">
 						<div class="center_down_up">
@@ -147,12 +151,12 @@
 					<div class="center_hr"></div>
 				</div>
 			</div>
+			
+			
 			<div class="main-container" id="main" style="width:99%">
- <iframe src="bottom.html" width="100%" height="100%" frameborder="0">
- 您的浏览器不支持iframe，请升级
- </iframe>
- 
  
 </div>
+
+
  </body>
  </html>

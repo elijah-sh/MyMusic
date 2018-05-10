@@ -8,10 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.music.pojo.Album;
+import com.music.pojo.Song;
+import com.music.pojo.SongList;
 import com.music.service.IAlbumService;
 import com.music.service.ISongListService;
+import com.music.service.ISongService;
 
 
 @Controller  
@@ -20,31 +24,49 @@ public class HomeController {
  
 	@Autowired
 	private ISongListService iSongListService;
-	
+	@Autowired
+	private ISongService iSongService;
 	@Autowired
 	private IAlbumService iAlbumService;
 	  
     @RequestMapping("/getHotSongLists") 
-	public String GetHotSongLists(){
+    @ResponseBody
+	public void GetHotSongLists(ModelMap map){
 		
-    	iSongListService.getHotSongLists(4);
-		return "home/bottom";
+    	List<SongList>	hotSongList =	iSongListService.getHotSongLists(4);
+    	 map.addAttribute("songHotList", hotSongList); 
 	}
     
     @RequestMapping("/getHotAlbums") 
-   	public String GetHotAlbums(ModelMap map){
+    @ResponseBody
+   	public void GetHotAlbums(ModelMap map){
    		
     	List<Album> albumList = iAlbumService.getHotAlbums(8);
     	map.addAttribute("albumList", albumList);
-   		return "home/home";
+        map.addAttribute("name", "thymeleaf-imooc");
+
+    	System.out.println(albumList.size());
+    	System.out.println(albumList.get(0).getName());
+
    	}
     
     @RequestMapping("/getHotSongs") 
-   	public String GetHotSongs(){
-    	iSongListService.getHotSongs(10);
-    	System.out.println("---");
-   		return "home/index";
+    @ResponseBody
+   	public void GetHotSongs(ModelMap map){
+    	List<Song> hotSong  = iSongService.getHotSongs(10);
+    	map.addAttribute("hotSong", hotSong);
+   		
    	}
     
-    
+	@RequestMapping("/main")
+    public String index(ModelMap map) {
+        map.addAttribute("name", "thymeleaf-imooc");
+    	List<Album> albumList = iAlbumService.getHotAlbums(8);
+    	System.out.println(albumList.size());
+
+        map.addAttribute("albumList", albumList);
+        return "/home/index";
+    }
+	
+	
 }

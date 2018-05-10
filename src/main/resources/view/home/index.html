@@ -1,8 +1,18 @@
 <html>
-<head>
+<head  >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>Love Of Music</title>
+
+		<script th:src="@{/static/js/jquery-min.js}"></script>
+<!-- 		 <script src="/static/js/jquery-min.js"></script>
+ -->		 
+ 		<link href="/static/home/css/top.css" media="screen" rel="Stylesheet" type="text/css" />
+		<link href="/static/home/css/foot.css" media="screen" rel="Stylesheet" type="text/css" />
+		 <link href="/static/bootstrap/css/bootstrap.min.css" media="screen" rel="Stylesheet" type="text/css" />
+		      
 <style>
+
+
 	*{
 		margin:0px;
 		padding:0px;
@@ -23,20 +33,202 @@
 		height:100px;
 		top:78%;
 	}
-	
+	.hot_title{
+		font-weight:bold;
+		font-size:16px;
+	}
 </style>
-      <script th:src="@{/static/js/jquery.min.js}"></script>
+     
   
  </head>
 <body>
 
-  <spen class="am-topbar admin-header" th:utext="${foot}" />
+<spen class="am-topbar admin-header" th:utext="${top}" />
 
- <!--   <iframe name="content"  th:src="@{home.html}" id="icontent" frameborder="0" scrolling="auto"  allowTransparency="true">
-		内容iframe，这个iframe用来显示网页，本体则是用来播放音乐的，数据从session中获取
-	</iframe>   -->
-<!-- <iframe name="player" src="player.html" id="player" frameborder="0" scrolling="no" allowTransparency="true">
+	<div id="color">
+				<div class="center">
+				
+							<div class="center_hr"></div>
+							<!-- 
+							<div class="center_down">
+							
+								<h1 >热门歌单</h1>
+								<div class="jiantou2"></div>
+								<a href="#" class="more2">更多</a>
+								<div class="classfiy">
+									<a class="classfiy1">  内地   </a>
+									<a class="classfiy2">  港台   </a>
+									<a class="classfiy3">  欧美   </a>
+									<a class="classfiy4">  日韩   </a>
+								</div>
+							</div>
+										<hr />
+							<div class="center_up_down" id="hot_songlists">
+						
+									 热门歌单 内容
+								<div class="center_up_down1">
+									<dl th:each="album : ${albumList}" >
+										<dt>
+										<title th:title="${album.name}"></title>
+											<a href="#">
+											 	<img  th:src="${album.img}" width="140px" heigth="140px"  />
+											 </a> 
+										</dt>
+										<dd>
+											<a href="#"> <span th:text="${album.intro}"></span> </a>
+										</dd>
+								  </dl>
+							  </div>
+								 <p th:unless="${album != null}" >暂时还没有艺术家哦...</p>
+								 <div th:unless="${album == null}" class="left2">
+										<a href="#">查看全部&gt;&nbsp;&nbsp;</a>
+								</div>
+							<div class="clear_fix"></div>
+						 </div>
+					  </div> -->
+					  
+					<div class="center_center">
+						<div class="center_center_up">
+							<div class="circle2"></div>
+							<h1 class="album">热门歌单</h1>
+							<div class="jiantou2"></div>
+							<a href="#" class="more2">更多</a>
+							<div class="classfiy">
+								<a class="classfiy1">  内地   </a>
+								<a class="classfiy2">  港台   </a>
+								<a class="classfiy3">  欧美   </a>
+								<a class="classfiy4">  日韩   </a>
+							</div>
+						</div>
+						   <hr />
+						<div class="center_center_down" id="hot_albums" >
+							
+							<!--  热门歌单 内容 -->
+							
+							<div class="center_up_down1">
+										<dl th:each="album : ${albumList}" >
+											<dt>
+											
+										 <a th:href="${album.name}"><img  th:src="${album.img}" width="140px" heigth="140px"  /></a>
+												<title th:title="${album.name}"></title>
+											<dd>
+<!-- 												<a href="#"> <span th:text="${album.name}"></span> </a>
+ -->											</dd>
+											</dt>
+									  </dl>
+							  </div>
+				 
+								<p th:unless="${album == null}" >暂时还没有艺术家哦...</p>
+								 <div th:unless="${album != null}" class="left2">
+										<a href="#">查看全部&gt;&nbsp;&nbsp;</a>
+								</div>
+						<div class="clear_fix"></div>
+						</div>
+					</div>
+					
+					
+					
+					  
+					<!-- 	热搜结束 -->		
+					
+					<div class="center_hr"></div>
+					<div class="center_center">
+						<div class="center_center_up">
+							<div class="circle2"></div>
+							<h1 class="album">专辑</h1>
+							<div class="jiantou2"></div>
+							<a href="#" class="more2">更多</a>
+							<div class="classfiy">
+								<a class="classfiy1">  内地   </a>
+								<a class="classfiy2">  港台   </a>
+								<a class="classfiy3">  欧美   </a>
+								<a class="classfiy4">  日韩   </a>
+							</div>
+						</div>
+						   <hr />
+						<div class="center_center_down" id="hot_albums" >
+							
+							<!-- 热门专辑 内容 -->
+							
+						<div class="center_up_down1">
+							<dl  th:each="SongList: ${hotSongList}" >
+								<dt>
+									<a th:href="${SongList.img}"> <img  th:src="${SongList.img}" width="140px" /> </a>
+										<title th:title="${SongList.name}"></title>
+								<dd>
+									<a href="#" ><spen th:title="${SongList.name}"></spen> </a>
+								</dd>
+								</dt>
+							</dl>
+						</div>
+				 
+								<p th:unless="${hotSongList != null}" >暂时还没有歌单哦...</p>
+							
+								<div th:unless="${hotSongList == null}" class="left2">
+									<a href="#">查看全部&gt;&nbsp;&nbsp;</a>
+								</div>
+						<div class="clear_fix"></div>
+						</div>
+					</div>
+				<!-- 	songlist 专辑结束 -->		
+					
+					
+					<div class="center_hr"></div>
+					<div class="center_down">
+						<div class="center_down_up">
+							<div class="circle3"></div>   <!-- 一个红点点 -->
+							<h1 class="rank">榜单</h1>
+							
+							<div class="jiantou3"></div>
+							<a href="#" class="more3">更多</a>
+							<div class="classfiy">
+								<a class="classfiy1">  内地   </a>
+								<a class="classfiy2">  港台   </a>
+								<a class="classfiy3">  欧美   </a>
+								<a class="classfiy4">  日韩   </a>
+							</div>
+						</div>
+						<hr />
+						<div class="center_down_down">
+							<div class="down_left" id="hot_songs">
+								<!-- 热歌榜 -->
+								
+					<div class="left1">
+						<div class="left1_img"></div>   
+						<a href="#" class="hot_title">热歌榜</a> <a class="left2_img" href="#"></a>
+					</div>
+					 
+						<div th:unless="${hotSong == null}" >					
+							<ul th:each="hotSong : ${hotSong}">
+								<li class="li1"><a href="#">  <span th:text="${hotSong.name}" /></a></li>
+							</ul>
+						</div>	
+					
+					<p th:unless="${hotSong != null}" >暂时还没有歌曲哦...</p>
+					
+					<div class="left2">
+						<a href="#">查看全部&gt;&nbsp;&nbsp;</a>
+					</div>
+													
+							</div>
+						</div>
+						<div class="clear_fix"></div>
+					</div>
+					
+				 	<div class="center_hr"></div>
+					
+				</div>
+			</div>
+			
+			
+			<div class="main-container" id="main" style="width:99%">
+ 
+</div>
 
-</iframe> -->
+
+
 </body>
+
 </html>
+<div class="am-topbar admin-header" th:utext="${foot}"  />
+

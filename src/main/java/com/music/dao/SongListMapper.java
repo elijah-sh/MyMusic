@@ -1,5 +1,6 @@
 package com.music.dao;
 
+import com.music.pojo.Song;
 import com.music.pojo.SongList;
 
 import java.util.List;
@@ -21,6 +22,5 @@ public interface SongListMapper {
     // 获取热门歌曲
     public List<SongList> getHotSongLists(int limit);
     
-    //榜单
-    public List<SongList> getHotSongs(int limit );
+    
 }

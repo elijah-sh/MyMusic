@@ -23,4 +23,7 @@ public interface SongMapper {
    
     public List<Song> findAllSong(Song song);
     
+  //榜单
+    public List<Song> getHotSongs(int limit );
+    
 }

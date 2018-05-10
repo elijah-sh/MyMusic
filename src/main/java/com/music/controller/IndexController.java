@@ -4,114 +4,68 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.music.pojo.Album;
+import com.music.pojo.Song;
+import com.music.pojo.SongList;
+import com.music.service.IAlbumService;
+import com.music.service.ISongListService;
+import com.music.service.ISongService;
+
 
 
 @Controller  
-@RequestMapping("/music") 
+@RequestMapping("/Music") 
 public class IndexController {
  
+	@Autowired
+	private ISongListService iSongListService;
+	@Autowired
+	private ISongService iSongService;
+	@Autowired
+	private IAlbumService iAlbumService;
+	
     @RequestMapping("/") 
-	public String Index()throws Exception{
-		System.out.println("启动成功");
-		return "home/index";
-	}
-    @RequestMapping("/select") 
- 	public String Test(ModelMap map)throws Exception{
-			File File = new File("D:/foot.html");  
-	        Document doc = Jsoup.parse(File,"UTF-8"  );  
-    	  map.addAttribute("headerContent", doc);
-  		map.addAttribute("sideBarContent", doc.select("title").toString());    
-  			System.out.println(doc.body());
-    //  map.addAttribute("Content", doc.select("#ul").first().toString());
-      
- 		return "home/center";
- 	}
-     
-    @RequestMapping("/index")
     public String backgroud(ModelMap map  ) throws Exception{
-    	File directory = new File("");//参数为空 
-    	String courseFile = directory.getCanonicalPath() ; 
-    	System.out.println(courseFile); 
-    	
-    	//String fileUrl = courseFile+"\\target\\classes\\static\\";
     	String tt=Thread.currentThread().getContextClassLoader().getResource("").getPath(); 
+    	//  地址只用于Windows文件路径格式 \ 
     	String path=tt.substring(1,tt.length()).replace('/', '\\');
-    	//  D:\MyDocuments\Java%20EE\Workspaces\Music\target\classes\classes\static\view\home\foot.html
-    	//		 D:\MyDocuments\Java%20EE\Workspaces\Music\target\classes\view\home\foot.html
-    	// 物理知道   D:\MyDocuments\Java EE\Workspaces\Music\target\classes\view\home\foot.html
-    	System.out.println("path: "+path);
+    	String Url = path+"view\\home\\";
+    	String fileUrlfoot = Url + "foot.html"; 
+    	String fileUrltop = Url + "top.html"; 
     	
-    	String fileUrl = path+"view\\home\\";
-    	fileUrl = fileUrl + "foot.html"; 
-    	System.out.println(fileUrl);
-     	 File File = new File(fileUrl );  
-    	  Document doc = Jsoup.parse(File,"UTF-8" );  
-    	 map.addAttribute("foot", doc); 
+    	String fileUrlmain = Url + "main.html"; 
+     	 File Filefoot = new File(fileUrlfoot ); 
+     	 File Filetop = new File(fileUrltop ); 
+     	 File Filemain = new File(fileUrlmain); 
+    	 Document foot = Jsoup.parse(Filefoot,"UTF-8" );  
+    	 Document top = Jsoup.parse(Filetop,"UTF-8" ); 
+    	 Document main = Jsoup.parse(Filemain,"UTF-8" ); 
+    	 map.addAttribute("foot", foot); 
+    	 map.addAttribute("top",top ); 
+    	 map.addAttribute("main",main ); 
+    	 
+     	List<SongList>	hotSongList =	iSongListService.getHotSongLists(4);
+    	List<Album> albumList = iAlbumService.getHotAlbums(8);
+    	List<Song> hotSong  = iSongService.getHotSongs(10);
     	
+    	map.addAttribute("hotSong", hotSong);
+    	map.addAttribute("albumList", albumList);
+    	map.addAttribute("hotSongList", hotSongList); 
+    		System.out.println(hotSong.size());
     	return "home/index";
     }
     
-    public void getNavigation(Integer naviType,ModelMap map){   
-    	String fileUrl = null;   
-    	switch(naviType){     
-	    	case 1:       //admin navigatioin      
-	    		fileUrl = fileUrl + "header_admin.html";  
-	    		break;        
-	    	case 2:  //user navigation          
-    			fileUrl = fileUrl + "header_trader.html";   
-    			break;         
-	    	default:          
-				fileUrl = fileUrl + "header_trader.html";  
-    		 break;  
-    	}try {
-			
-    		InputStream input = this.getClass().getResourceAsStream(fileUrl);  
-    		Document doc = Jsoup.parse(input,"UTF-8","http://www.mychuangao.com/");  
-    		map.addAttribute("headerContent", doc.select("header").toString());    
-    		map.addAttribute("sideBarContent", doc.select("#admin-offcanvas").first().toString());            map.addAttribute("footerContent", changeAttrAddress(doc.select("footer"),"script","src"));            map.addAttribute("headContent", changeAttrAddress(doc.select("head"),"link","href"));  
-    	} catch (Exception e){    
-    			map.addAttribute("headContent", "");     
-    			map.addAttribute("headerContent", "");     
-    			map.addAttribute("sideBarContent", "");    
-    			map.addAttribute("footerContent", "");    
-    			}  
-    		
-    }    
-    
-		private String changeAttrAddress(Elements parentNode,String dealingNodeName,String attrName){   
-				Elements elements = parentNode.select(dealingNodeName);   
-				for(Element elment : elements){       
-					String orignalAddress = elment.attr(attrName);    
-					if(orignalAddress.isEmpty()){      
-						continue;      
-					}         
-			orignalAddress = delInnerPath(orignalAddress);        
-			elment.attr(attrName,orignalAddress);     
-			
-				}     
-				return parentNode.toString();  
-				
-		} 
-		
-		private String delInnerPath(String address){   
-			String keyWord = "static";     
-			if(address.contains(keyWord)==false){   
-				return address;      
-				}      
-			int position = address.indexOf(keyWord) + keyWord.length() + 1;    
-			return address.substring(position); 
-			
-		}
-    	
     
    
 }

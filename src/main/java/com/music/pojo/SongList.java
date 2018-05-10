@@ -2,6 +2,7 @@ package com.music.pojo;
 
 import java.util.Date;
 
+// 歌单
 public class SongList {
     private Integer id;
 

@@ -3,7 +3,9 @@ package com.music.pojo;
 import java.util.HashSet;
 import java.util.Set;
 
+// 歌曲
 public class Song {
+	
     private Long songId;
 
     private String name;

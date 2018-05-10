@@ -14,8 +14,11 @@ import com.music.pojo.User;
 public interface ISongListService {
  
 
+
+	// 根据热度取得歌单  主页面
+	public List<SongList> getHotSongLists(int limit) ;
+ 
 	
-	public List<SongList> getHotSongs(int limit) ;
 	
 	// 得到完整信息的歌单(建立与歌单关联的需要的映射)
 	//歌单id,歌单创建者，歌单图片，歌单创建时间，歌单创建者的头像，歌单所属分类，歌单介绍，歌曲列表，歌曲评论
@@ -23,9 +26,6 @@ public interface ISongListService {
  
 	
 
-	// 根据热度取得歌单
-	public List<SongList> getHotSongLists(int limit) ;
- 
 	
 	// 根据歌单分类取得歌单
 	public List<SongList> getSongListByCategory(ListCategory listCategory) ;

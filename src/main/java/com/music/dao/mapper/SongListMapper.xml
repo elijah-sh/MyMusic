@@ -50,7 +50,7 @@
      WHERE list_to_category.list_category_id = #{categoryId,jdbcType=INTEGER}
   </select> -->
   
-  
+<!--   专辑 -->
     <select id="getHotSongLists" resultMap="SongListResultMap" parameterType="java.lang.Integer" >
      select song_list.*, sum(song.count) sum_count  from song_list
     join song_to_list on song_to_list.song_list_id = song_list.id 
@@ -58,9 +58,6 @@
     group by song_list.id order by sum_count desc limit   #{limit,jdbcType=INTEGER}
   </select>
   
-	<!--   获取热度排行榜 -->
-     <select id="getHotSongs" resultMap="SongListResultMap" parameterType="java.lang.Integer" >
-     select * from song order by count desc limit  #{limit,jdbcType=INTEGER}
-  </select>
+
   
 </mapper>

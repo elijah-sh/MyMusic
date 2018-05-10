@@ -18,17 +18,6 @@ public class SongListServiceImpl implements ISongListService {
 	 @Autowired
 	 private SongListMapper songListMapper;
 	
-	 // 主页面榜单
-		@Override
-	 public List<SongList> getHotSongs(int limit) {
-			// TODO Auto-generated method stub
-			return songListMapper.getHotSongLists(limit);
-			
-			/*	List<Song> songs=service.getHotSongs(10);
-			 * request.setAttribute("songs", songs);
-			request.getRequestDispatcher("home/song/hotSongs.jsp").forward(request, response);*/
-		}
-		
 	public List<SongList> getSongListsByCategoryId(int categoryId) {
 	 
 		return null;

@@ -7,5 +7,17 @@
 <body>
 Thymeleaf模板引擎
 <h1 th:text="${name}">hello world~~~~~~~</h1>
+<h1 th:text="${name}">hello  ~~~~~~~</h1>
+
+<h1 th:text="${name}">  world~~~~~~~</h1>
+<dl th:each="album : ${albumList}" >
+							<dt>
+							<a href="#"> <img  th:src="${album.img}" width="140px" heigth="140px"
+									th:title="${album.name}" /></a> 
+							</dt>
+							<dd>
+								<a href="#"> <span th:text="album.name"></span> </a>
+							</dd>
+					  </dl>
 </body>
 </html>

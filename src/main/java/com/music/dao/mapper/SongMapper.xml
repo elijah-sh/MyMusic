@@ -99,6 +99,10 @@
     where SONG_ID = #{songId,jdbcType=BIGINT}
   </update>
  
+  	<!--   获取热度排行榜 -->
+     <select id="getHotSongs" resultMap="SongResultMap" parameterType="java.lang.Integer" >
+     select * from song order by count desc limit  #{limit,jdbcType=INTEGER}
+  </select>
   
    
 </mapper>
