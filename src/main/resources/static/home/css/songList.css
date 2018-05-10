@@ -1,0 +1,284 @@
+#color {
+	width: 100%;
+	height: 1000px;
+	background-color: aliceblue;
+}
+
+.center {
+	border: 1px solid gainsboro;
+	width: 864px;
+	height: 1000px;
+	margin: 0px auto;
+}
+
+.center .center_left {
+	float: left;
+	width: 200px;
+	height: 1000px;
+	border: 1px solid gainsboro;
+	background-color: mintcream;
+}
+
+.center .center_left li {
+	list-style: none;
+}
+
+.center .center_left a {
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	margin-left: 35px;
+}
+
+.center .center_left a:hover {
+	text-decoration: underline;
+}
+
+.center .center_left .left_space {
+	width: 100%;
+	height: 30px;
+}
+
+.center .center_left h3 {
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: 600;
+	margin-left: 25px;
+	padding-bottom: 15px;
+}
+
+.center .center_left #red {
+	width: 160px;
+	height: 30px;
+	background-image: url(img/singer.png);
+	background-position: 0px 0px;
+	margin-left: 10px;
+}
+
+.center .center_left #redfont {
+	color: darkred;
+}
+
+.center .center_left .white {
+	width: 160px;
+	height: 30px;
+	background-image: url(img/singer.png);
+	background-position: 0px 30px;
+	margin-left: 10px;
+}
+.white {
+	display:inline;
+}
+
+.center .center_left hr {
+	width: 88%;
+	color: gray;
+	margin: 0px auto;
+	margin-top: 15px;
+}
+
+.center .center_right {
+	float: left;
+	width: 660px;
+	height: 1000px;
+	border: 1px solid gainsboro;
+}
+
+.center .center_right .right_top {
+	width: 100%;
+	height: 80px;
+}
+
+.center .center_right .right_top h2 {
+	float: left;
+	font-size: 22px;
+	font-weight: 500;
+	margin-top: 40px;
+	margin-left: 30px;
+}
+
+.center .center_right .right_top a {
+	float: left;
+	font-size: 13px;
+	color: black;
+	text-decoration: none;
+	margin-top: 50px;
+	margin-left: 72%;
+}
+
+.center .center_right dd a {
+	float: left;
+	font-size: 13px;
+	color: black;
+	text-decoration: none;
+}
+
+.center .center_right a:hover, dt a:hover {
+	text-decoration: underline;
+}
+
+.center .center_right .hr1 {
+	width: 92%;
+	color: red;
+	margin: 0px auto;
+}
+
+.center .center_right dt {
+	width: 100px;
+	height: 100px;
+	border: 1px solid gainsboro;
+	float: left;
+	margin-left: 25px;
+	margin-top: 20px;
+}
+
+.center .center_right dd {
+	float: left;
+	margin-top: 130px;
+	margin-left: -100px;
+}
+
+.center .center_right dl {
+	float: left;
+	padding-bottom: 20px;
+}
+
+.center .center_right .zan {
+	float: left;
+	width: 20px;
+	height: 20px;
+	background-image: url(img/icon.png);
+	background-position: 0px -740px;
+	margin-left: 40px;
+	margin-top: 2px;
+}
+
+.center .center_right .hotsonglist {
+	clear: both;
+	float: left;
+	font-size: 22px;
+	font-weight: 500;
+	margin-left: 30px;
+	margin-top: 30px;
+	padding-bottom: 15px;
+}
+
+.center .center_right .hr2 {
+	width: 92%;
+	color: red;
+	clear: both;
+	margin: 0px auto;
+}
+
+.center .center_right .hr3 {
+	width: 92%;
+	clear: both;
+	margin: 0px auto;
+}
+
+.center .center_right .right_top .bottom {
+	clear: both;
+	width: 100%;
+	height: 130px;
+	border: 1px solid gainsboro;
+	background-color: mintcream;
+}
+
+.center .center_right ul li {
+	float: left;
+	width: 100px;
+	height: 30px;
+	list-style: none;
+	margin-left: 4%;
+	margin-top: 15px;
+}
+
+.center .center_right ul li a {
+	text-align: left;
+	text-decoration: none;
+	color: black;
+	font-size: 13px;
+}
+
+.center .center_right .zan1 {
+	float: left;
+	width: 20px;
+	height: 20px;
+	background-image: url(img/icon.png);
+	background-position: 0px -740px;
+	margin-left: 50px;
+	margin-top: -17px;
+}
+
+.bottom {
+	clear: both;
+	width: 100%;
+	height: 130px;
+	border: 1px solid gainsboro;
+	background-color: mintcream;
+}
+
+.bottom .space {
+	clear: both;
+	float: left;
+	width: 12%;
+	height: 90px;
+}
+
+.bottom .bottom_left {
+	float: left;
+	width: 23%;
+	height: 90px;
+	padding-top: 40px;
+}
+
+.bottom .bottom_center {
+	float: left;
+	width: 23%;
+	height: 90px;
+	padding-top: 40px;
+}
+
+.bottom .bottom_right {
+	float: left;
+	width: 35%;
+	height: 90px;
+	padding-top: 40px;
+}
+
+.bottom li {
+	list-style: none;
+}
+
+.bottom a {
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+}
+
+.bottom .font2, .bottom .font4, .bottom .font5, .bottom .font6 {
+	color: grey;
+}
+
+.bottom .bottom_left .bottom_img1 {
+	float: left;
+	width: 45px;
+	height: 45px;
+	background-image: url(img/sprite.png);
+	background-position: -400px -80px;
+}
+
+.bottom .bottom_center .bottom_img2 {
+	float: left;
+	width: 50px;
+	height: 50px;
+	background-image: url(img/sprite.png);
+	background-position: -400px -125px;
+}
+
+.letter {
+	font-family: "微软雅黑";
+}
+.floatleft {
+	float:left;
+}

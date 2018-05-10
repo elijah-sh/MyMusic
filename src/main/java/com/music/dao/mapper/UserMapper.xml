@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.UserMapper">
+  <resultMap id="UserResultMap" type="com.music.pojo.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="is_manager" jdbcType="INTEGER" property="isManager" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+  </resultMap>
+  <delete id="deleteByPrimaryKeyUser" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertUser" parameterType="com.music.pojo.User">
+    insert into user (id, username, password, 
+      img, is_manager, sex, 
+      nickname, intro)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{img,jdbcType=VARCHAR}, #{isManager,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, 
+      #{nickname,jdbcType=VARCHAR}, #{intro,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeyUser" parameterType="com.music.pojo.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      is_manager = #{isManager,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKeyUser" parameterType="java.lang.Integer" resultMap="UserResultMap">
+    select id, username, password, img, is_manager, sex, nickname, intro
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllUser" resultMap="UserResultMap">
+    select id, username, password, img, is_manager, sex, nickname, intro
+    from user
+  </select>
+</mapper>

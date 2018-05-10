@@ -1,0 +1,110 @@
+
+<%@page import="java.util.List"%>
+<%@page import="com.neteasemusic.www.entity.SongList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="top.jsp" %>
+<%@ include file="ctrl.jsp" %>
+
+<link rel="stylesheet" href="/Music/home/css/myMusic.css" />
+		<script>
+			function getSongListDetail(container,id){
+				
+				$.post(
+					"/Music/SongListServlet?action=ajaxSongListDetail",
+					{
+						"id":id
+					},
+					function(data){
+						container.html(data);
+					}
+				);
+			}
+			
+		
+			
+			
+			$(function(){
+				
+				getSongListDetail($("#list_detail"),$("#myfirst").val());
+				
+				$(".list2").each(function(index,element){
+					var songlist=$(this);
+					songlist.click(function(){
+						//发送post请求
+						getSongListDetail($("#list_detail"),$(this).attr("songlist_id"));
+					});
+				});
+				
+			});
+		</script>
+<div id="centre">
+			
+			<div class="cleft" style="margin:0px;padding:0px;">
+				<div class="earthList">
+					创建的歌单
+				</div>
+		<%
+			List<SongList> mySongLists=(List<SongList>)session.getAttribute("mySongLists");
+			List<SongList> collectSongLists=(List<SongList>)session.getAttribute("collectSongLists");
+			if(mySongLists==null){
+				User user2=(User)session.getAttribute("user");
+				if(user2!=null){
+					if(!response.isCommitted()){
+						response.sendRedirect("/Music/UserServlet?action=homePage&id="+user2.getId());
+					}
+				}else{
+					if(!response.isCommitted()){
+						response.sendRedirect("/Music/home/login.jsp");
+					}
+				}
+			}
+			if(mySongLists!=null&&mySongLists.size()>0){
+				
+		%>
+			<input type="hidden" id="myfirst" value="<%=mySongLists.get(0).getId()%>" songlist_id="<%=mySongLists.get(0).getId()%>"/>
+				
+				<%
+				for(SongList songList:mySongLists){
+				%>
+				<a href="#">
+				<div class="list2" style="cursor:pointer;" class="songlistt" songlist_id="<%=songList.getId()%>">
+					<div class="img">
+						<img src="<%=songList.getImg() %>" style="width:40px;" />
+					</div>
+					<div class="listname">
+						<%=songList.getName() %>
+					</div>
+					<div class="listtime">
+						
+					</div>
+				</div>
+				</a>
+				<%
+				}
+				%>
+				
+		<%
+			}else{
+		%>
+		
+		<p>暂时还没有创建歌单</p>
+		
+		<%} %>
+				
+				
+	
+				
+				
+				
+				
+				
+			</div>
+			
+			<div class="cright" id="list_detail" style="width:720px;margin:0px;padding:0px;">
+				<!-- ajax加载歌单详情数据 -->
+			</div>
+		</div>
+		
+
+<%@ include file="bottom.jsp" %>

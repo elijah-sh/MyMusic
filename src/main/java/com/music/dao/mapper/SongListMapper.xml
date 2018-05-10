@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.SongListMapper">
+  <resultMap id="SongListResultMap" type="com.music.pojo.SongList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="is_love" jdbcType="INTEGER" property="isLove" />
+    <result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+  </resultMap>
+  <delete id="deleteByPrimaryKeySongList" parameterType="java.lang.Integer">
+    delete from song_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSongList" parameterType="com.music.pojo.SongList">
+    insert into song_list (id, name, img, 
+      count, create_time, user_id, 
+      is_love, intro)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
+      #{count,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{userId,jdbcType=INTEGER}, 
+      #{isLove,jdbcType=INTEGER}, #{intro,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySongList" parameterType="com.music.pojo.SongList">
+    update song_list
+    set name = #{name,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=DATE},
+      user_id = #{userId,jdbcType=INTEGER},
+      is_love = #{isLove,jdbcType=INTEGER},
+      intro = #{intro,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKeySongList" parameterType="java.lang.Integer" resultMap="SongListResultMap">
+    select id, name, img, count, create_time, user_id, is_love, intro
+    from song_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllSongList" resultMap="SongListResultMap">
+    select id, name, img, count, create_time, user_id, is_love, intro
+    from song_list
+  </select>
+  
+<!--   <select id="getSongListsByCategoryId" resultMap="SongListResultMap" parameterType="java.lang.Integer" >
+    
+    SELECT song_list.* from song_list JOIN list_to_category on song_list.id = list_to_category.song_list_id
+     WHERE list_to_category.list_category_id = #{categoryId,jdbcType=INTEGER}
+  </select> -->
+  
+  
+    <select id="getHotSongLists" resultMap="SongListResultMap" parameterType="java.lang.Integer" >
+     select song_list.*, sum(song.count) sum_count  from song_list
+    join song_to_list on song_to_list.song_list_id = song_list.id 
+    join song on song.id = song_to_list.song_id
+    group by song_list.id order by sum_count desc limit   #{limit,jdbcType=INTEGER}
+  </select>
+  
+	<!--   获取热度排行榜 -->
+     <select id="getHotSongs" resultMap="SongListResultMap" parameterType="java.lang.Integer" >
+     select * from song order by count desc limit  #{limit,jdbcType=INTEGER}
+  </select>
+  
+</mapper>

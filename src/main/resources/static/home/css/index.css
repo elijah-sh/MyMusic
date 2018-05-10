@@ -1,0 +1,651 @@
+
+			
+			.top .top_down {
+				width: 100%;
+				height: 336px;
+				background-color: black;
+			}
+			
+			#slide {
+				width: 700px;
+				height: 330px;
+				margin: 0px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#slide ul {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				height: 400px;
+				width: 11930px;
+			}
+			
+			#slide ul li {
+				width: 730px;
+				height: 336px;
+				overflow: hidden;
+				float: left;
+			}
+			
+			#slide .ico {
+				width: 700px;
+				height: 20px;
+				overflow: hidden;
+				text-align: center;
+				position: absolute;
+				left: 0px;
+				bottom: 10px;
+				z-index: 1;
+			}
+			
+			#slide .ico a {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				margin: 0px 5px;
+			}
+			
+			#slide .ico .active {
+			}
+			
+			#btnLeft {
+				width: 60px;
+				height: 400px;
+				left: 0px;
+				top: 0px;
+				background: url() no-repeat 0px 0px;
+				position: absolute;
+				z-index: 2;
+			}
+			
+			#btnLeft :hover {
+				background: url() no-repeat 0px 0px;
+			}
+			
+			#btnRight {
+				width: 60px;
+				height: 400px;
+				right: 0px;
+				top: 0px;
+				background: url() no-repeat 0px 0px;
+				position: absolute;
+				z-index: 2;
+			}
+			
+			#btnRight :hover {
+				background: url() no-repeat 0px 0px;
+			}
+			
+			#color {
+				background-color: #f0f8ff7d;
+			}
+			
+			.center {
+				width: 85%;
+				/* border: 1px solid gainsboro; */
+				margin: 5px auto;
+				background-color: white;
+			}
+		
+/* 每个模块的分隔符 */
+			.center_hr{
+				width: 100%;
+				height:5px;
+				background-color: #f0f8ff7d;
+			}
+
+/* 每个模块的分类	 */	
+			.classfiy{
+				float: right;
+				margin-right:50px;
+				margin-top: 25px;
+			}
+			
+			.classfiy1,.classfiy2,.classfiy3,.classfiy4{
+			    display:line-block;
+			    margin-left:10px;
+				text-decoration: none;
+				font-size: 15px;
+				font-family:"微软雅黑";
+				color: grey;
+				background: url(../img/shennue.png) no-repeat;
+			}
+			.classfiy1:hover,.classfiy2:hover,.classfiy3:hover,.classfiy4:hover{
+				color: #52e2c0;
+				cursor: pointer;
+			}
+				
+			.center .center_up .center_up_up {
+				width: 100%;
+				height: 58px;
+			}
+			
+			.center .center_up .center_up_up .circle1 {
+				margin-left: 30px;
+				float: left;
+				width: 30px;
+				height: 50px;
+				background-image: url(../img/index2.png);
+				background-position: -225px -132px;
+			}
+			
+			.center .center_up .center_up_up .hot {
+				float: left;
+				margin-top: 25px;
+				margin-left: 10px;
+				font-size: 20px;
+				font-weight: 500;
+			}
+			
+			.center .center_up .center_up_up .catalog {
+				float: left;
+				margin-top: 26px;
+			}
+			
+			.center .center_up .center_up_up .catalog li {
+				float: left;
+				margin-left: 14px;
+				list-style: none;
+				color: lightgray;
+			}
+			
+			.center .center_up .center_up_up .catalog li a {
+				font-size: 12px;
+				color: grey;
+				text-decoration: none;
+			}
+			
+			.center .center_up .center_up_up .catalog li a:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_up .center_up_up .more1 {
+				float: right;
+				text-decoration: none;
+				font-size: 12px;
+				color: grey;
+				margin-top: 30px;
+			}
+			
+			.center .center_up .center_up_up .more1:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_up .center_up_up .jiantou1 {
+				float: right;
+				width: 30px;
+				height: 20px;
+				background-image: url(../img/index2.png);
+				background-position: 0px -240px;
+				margin-left: 8px;
+				margin-right:20px;
+				margin-top: 32px;
+			}
+			
+			.center .center_up hr {
+				width: 94%;
+				color: red;
+				margin: 0px auto;
+			}
+			
+			.center .center_up .center_up_down {
+				width: 725px;
+				height: 450px;
+			}
+			
+			.center .center_up .center_up_down a {
+				text-decoration: none;
+				color: black;
+				font-size: 14px;
+			}
+			
+			.center .center_up .center_up_down a:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_up .center_up_down .center_up_down1 dt {
+				width: 140px;
+				height: 140px;
+				border: 1px solid gainsboro;
+				float: left;
+				margin-left: 30px;
+				margin-top: 15px;
+			}
+			
+			.center .center_up .center_up_down .center_up_down1 dd {
+				float: left;
+				margin-left: -140px;
+				margin-top: 180px;
+			}
+			
+			.center .center_up .center_up_down .center_up_down2 dt {
+				width: 140px;
+				height: 140px;
+				border: 1px solid gainsboro;
+				float: left;
+				margin-left: 30px;
+				margin-top: 40px;
+			}
+			
+			.center .center_up .center_up_down .center_up_down2 dd {
+				float: left;
+				margin-left: -100px;
+				margin-top: 205px;
+			}
+			
+			.center .center_center .center_center_up {
+				width: 100%;
+				height: 58px;
+			}
+			
+			.center .center_center .center_center_up .circle2 {
+				margin-left: 30px;
+				float: left;
+				width: 30px;
+				height: 50px;
+				background-image: url(../img/index2.png);
+				background-position: -225px -132px;
+			}
+			
+			.center .center_center .center_center_up .album {
+				float: left;
+				margin-top: 25px;
+				margin-left: 10px;
+				font-size: 20px;
+				font-weight: 500;
+			}
+			
+			.center .center_center .center_center_up .more2 {
+				float: right;
+				text-decoration: none;
+				font-size: 12px;
+				color: grey;
+				margin-top: 30px;
+			}
+			
+			.center .center_center .center_center_up .more2:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_center .center_center_up .jiantou2 {
+				float: right;
+				width: 30px;
+				height: 20px;
+				background-image: url(../img/index2.png);
+				background-position: 0px -240px;
+				margin-left: 8px;
+				margin-right:20px;
+				margin-top: 32px;
+			}
+			
+			.center .center_center hr {
+				width: 94%;
+				color: red;
+				margin: 0px auto;
+			}
+			
+			.center .center_center .center_center_down {
+				width: 94%;
+				height: 190px;
+				border: 1px solid gainsboro;
+				margin: 20px auto;
+			}
+			
+			.center .center_center .center_center_down dt {
+				width: 140px;
+				height: 140px;
+				border: 1px solid gainsboro;
+				float: left;
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+			
+			.center .center_center .center_center_down dd {
+				float: left;
+				margin-top: 165px;
+				margin-left: -90px;
+			}
+			
+			.center .center_center .center_center_down a {
+				text-decoration: none;
+				color: black;
+				font-size: 14px;
+			}
+			
+			.center .center_center .center_center_down a:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_down{
+				padding-bottom:20px;
+			}
+			
+			.center .center_down .center_down_up {
+				width: 100%;
+				height: 58px;
+			}
+			
+			.center .center_down .center_down_up .circle3 {
+				margin-left: 30px;
+				float: left;
+				width: 30px;
+				height: 50px;
+				background-image: url(../img/index2.png);
+				background-position: -225px -132px;
+			}
+			
+			.center .center_down .center_down_up .rank {
+				float: left;
+				margin-top: 25px;
+				margin-left: 10px;
+				font-size: 20px;
+				font-weight: 500;
+			}
+			
+			.center .center_down .center_down_up .more3 {
+				float: right;
+				text-decoration: none;
+				font-size: 12px;
+				color: grey;
+				margin-top: 30px;
+			}
+			
+			.center .center_down .center_down_up .more3:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_down .center_down_up .jiantou3 {
+				float: right;
+				width: 30px;
+				height: 20px;
+				background-image: url(../img/index2.png);
+				background-position: 0px -240px;
+				margin-left: 8px;
+				margin-right:20px;
+				margin-top: 32px;
+			}
+			
+			.center .center_down hr {
+				width: 94%;
+				color: red;
+				margin: 0px auto;
+			}
+			
+			.center .center_down .center_down_down .down_left {
+				width: 95%;
+				border: 1px solid gainsboro;
+				margin:0px auto;
+				margin-top:20px;
+				margin-bottom:20px;
+			}
+			
+			.center .center_down .center_down_down .down_left ul{
+				list-style: none;
+			}
+			
+			.center .center_down .center_down_down .down_left ul li{
+				text-indent:20px;
+			}
+			
+			.center .center_down .center_down_down .down_center ul{
+				list-style: none;
+			}
+			
+			.center .center_down .center_down_down .down_center ul li{
+				text-indent:20px;
+			}
+			
+			.center .center_down .center_down_down .down_right ul{
+				list-style: none;
+			}
+			
+			.center .center_down .center_down_down .down_right ul li{
+				text-indent:20px;
+			}
+			
+			
+			
+			.center .center_down .center_down_down .down_left .left1 {
+				float: left;
+				width: 100%;
+				height: 110px;
+				background-color: aliceblue;
+				font-size: 15px;
+			}
+			
+			.center .center_down .center_down_down .down_left .left1 .left1_img {
+				width: 80px;
+				height: 80px;
+				float: left;
+				border: 1px solid gainsboro;
+				background-image: url("../../img/hot.jpg");
+				background-position: 0px 0px;
+				margin-left: 20px;
+				margin-top: 13px;
+			}
+			
+			.center .center_down .center_down_down .left1 a,
+			.center1 a,
+			.right1 a {
+				float: left;
+				text-decoration: none;
+				color: black;
+				margin-left: 15px;
+				margin-top: 20px;
+			}
+			
+			.center .center_down .center_down_down .left2_img,
+			.center2_img,
+			.right2_img {
+				width: 25px;
+				height: 25px;
+				float: left;
+				background-image: url(../img/index2.png);
+				background-position: -265px -205px;
+			}
+			
+			.center .center_down .center_down_down .left2_img:hover,
+			.center2_img:hover,
+			.right2_img:hover {
+				background-image: url(../img/index2.png);
+				background-position: -265px -235px;
+			}
+			
+			.center .center_down .center_down_down .left3_img,
+			.center3_img,
+			.right3_img {
+				width: 25px;
+				height: 25px;
+				float: left;
+				background-image: url(../img/index2.png);
+				background-position: -300px -205px;
+			}
+			
+			.center .center_down .center_down_down .left3_img:hover,
+			.center3_img:hover,
+			.right3_img:hover {
+				background-image: url(../img/index2.png);
+				background-position: -300px -235px;
+			}
+			
+			.center .center_down .center_down_down .left2,
+			.center2,
+			.right2 {
+				width: 100%;
+				height: 20px;
+				float: left;
+				background-color: mintcream;
+				font-size: 12px;
+				text-align: right;
+				padding-top: 25px;
+			}
+			
+			.center .center_down .center_down_down .left2 a,
+			.center2 a,
+			.right2 {
+				text-decoration: none;
+				color: black;
+			}
+			
+			.center .center_down .center_down_down .left2 a:hover,
+			.center2 a,
+			.right2 a {
+				text-decoration: underline;
+			}
+			
+			.center .center_down .center_down_down .li1 {
+				float: left;
+				width: 100%;
+				height: 30px;
+				background-color: mintcream;
+				font-size: 15px;
+				padding-top: 10px;
+				
+			}
+			
+			.center .center_down .center_down_down .li2 {
+				float: left;
+				width: 100%;
+				height: 30px;
+				background-color: aliceblue;
+				font-size: 15px;
+				padding-top: 10px;
+				
+			}
+			
+			.center .center_down .center_down_down a {
+				text-decoration: none;
+				color: black;
+			}
+			
+			.center .center_down .center_down_down a:hover {
+				text-decoration: underline;
+			}
+			
+			.center .center_down .center_down_down .down_center {
+				float: left;
+				width: 31%;
+				height: 555px;
+				border: 1px solid gainsboro;
+				margin-top: 20px;
+			}
+			
+			.center .center_down .center_down_down .down_center .center1 {
+				float: left;
+				width: 100%;
+				height: 110px;
+				background-color: aliceblue;
+				font-size: 15px;
+			}
+			
+			.center .center_down .center_down_down .down_center .center1_img {
+				width: 80px;
+				height: 80px;
+				float: left;
+				border: 1px solid gainsboro;
+				background-image: url(../img/iTunesda.jpg);
+				background-position: 0px 0px;
+				margin-left: 20px;
+				margin-top: 13px;
+			}
+			
+			.center .center_down .center_down_down .down_right {
+				float: left;
+				width: 31%;
+				height: 555px;
+				border: 1px solid gainsboro;
+				margin-top: 20px;
+			}
+			
+			.center .center_down .center_down_down .down_right .right1 {
+				float: left;
+				width: 100%;
+				height: 110px;
+				background-color: aliceblue;
+				font-size: 15px;
+			}
+			
+			.center .center_down .center_down_down .down_right .right1_img {
+				width: 80px;
+				height: 80px;
+				float: left;
+				border: 1px solid gainsboro;
+				background-image: url(../img/UKlistda.jpg);
+				background-position: 0px 0px;
+				margin-left: 20px;
+				margin-top: 13px;
+			}
+			
+			.bottom {
+				clear: both;
+				width: 100%;
+				height: 130px;
+				border: 1px solid gainsboro;
+				background-color: mintcream;
+			}
+			
+			.bottom .space {
+				float: left;
+				width: 12%;
+				height: 90px;
+			}
+			
+			.bottom .bottom_left {
+				float: left;
+				width: 23%;
+				height: 90px;
+				padding-top: 40px;
+			}
+			
+			.bottom .bottom_center {
+				float: left;
+				width: 23%;
+				height: 90px;
+				padding-top: 40px;
+			}
+			
+			.bottom .bottom_right {
+				float: left;
+				width: 35%;
+				height: 90px;
+				padding-top: 40px;
+			}
+			
+			.bottom li {
+				list-style: none;
+			}
+			
+			.bottom a {
+				text-decoration: none;
+				font-size: 13px;
+				color: black;
+			}
+			
+			.bottom .font2,
+			.bottom .font4,
+			.bottom .font5,
+			.bottom .font6 {
+				color: grey;
+			}
+			
+			.bottom .bottom_left .bottom_img1 {
+				float: left;
+				width: 45px;
+				height: 45px;
+				background-image: url(../img/sprite.png);
+				background-position: -400px -80px;
+			}
+			
+			.bottom .bottom_center .bottom_img2 {
+				float: left;
+				width: 50px;
+				height: 50px;
+				background-image: url(../img/sprite.png);
+				background-position: -400px -125px;
+			}
+			
+			.clear_fix{
+				clear:both;
+			}

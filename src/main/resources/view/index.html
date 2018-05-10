@@ -1,0 +1,68 @@
+<html>
+<head>
+<title><decorator:title /></title>
+<link href="static/css/main.css" media="screen" rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+	var defaultValue="请输入歌名";
+	function cls() {
+		//捕获触发事件的对象，并设置为以下语句的默认对象 
+		with (event.srcElement)
+			//如果当前值为默认值，则清空 
+			if (value == defaultValue)
+				value = ""
+	}
+	function res() {
+		//捕获触发事件的对象，并设置为以下语句的默认对象 
+		with (event.srcElement)
+			//如果当前值为空，则重置为默认值 
+			if (value == "")
+				value = defaultValue
+	}
+</script>
+<decorator:head />
+</head>
+<body>
+	<div id="top">
+
+		<div id="head">
+			<s:if test="#session.user != null">
+				<div style="float: right">欢迎
+				${sessionScope.user.userName}
+				
+				光临!</div>
+			</s:if>
+			<s:else>
+				<div align="right" style="height: 15px;">
+					<a href="login.jsp">登陆</a> | <a href="register.jsp">注册</a>
+				</div>
+			</s:else>
+		</div>
+
+		<div id="title">
+			<img alt="logo" src="static/images/logo.bmp" height="79" width="288"
+				style="float: left">
+			<div
+				style="float: left; margin-left: 40px; margin-top:30px; color:green">
+				<form action="searchSong.action" method="post">
+					精彩生活从今声开始&nbsp;&nbsp;&nbsp; <input id="search" type="text"
+						name="songName" placeholder="请输入歌名"   onfocus="cls()" onblur="res()">
+					<input type="submit" value="音乐搜索">
+				</form>
+			</div>
+		</div>
+		<div id="menu">
+			<p id="navigation" align="center">
+				<a href="listSong.action">音乐首页 </a>| 
+				<a href="listSongByRegion.action?region=china">华语歌曲</a>| 
+				<a href="listSongByRegion.action?region=korea">韩国歌曲</a>| 
+				<a href="listSongByRegion.action?region=japan">日本歌曲 </a>| 
+				<a href="listSongByRegion.action?region=occident">欧美歌曲 </a>| 
+				<a href="collectSong_privateSong.action">我的音乐</a>| 
+				<a href="uploadSong.jsp">上传歌曲</a>
+			</p>
+		</div>
+	</div>
+	<decorator:body />
+	<p class="info">所有音乐搜索自互联网，出处与本站无关，档案仅作低品质试听请购买正版CD听高品质音乐，以支持你们的偶像</p>
+</body>
+</html>

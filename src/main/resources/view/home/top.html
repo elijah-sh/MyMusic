@@ -1,0 +1,82 @@
+
+<!-- <%@page import="com.neteasemusic.www.entity.User"%>
+ -->
+ <!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>网易云音乐&nbsp;&nbsp;听见好时光</title>
+ 		<link th:src="@{static/css/home/top.css}" rel="stylesheet"/>		
+		 <link th:src="@{static/css/home/index.css}" rel="stylesheet"/>
+
+		<script type="text/javascript" src="/Music/js/jquery-min.js"></script>
+		
+		<script>
+			//退出登录按钮的显示隐藏
+			function toggleLogout(){
+				$("#img_outer").mouseover(function(){
+					$("#logout").show();
+				});
+				$("#logout").mouseout(function(event){
+					$(this).hide();
+				});
+				$("#img_outer").mouseout(function(){
+					$("#logout").hide();
+				});
+			}
+			$(function(){
+				toggleLogout();
+			});
+		</script>
+</head>
+
+	<body>
+			<div class="top">
+				<div class="top_up">
+					
+					<div class="top_up_content">
+						<a href="#" class="logo">Love of music</a>
+						<ul>
+							<li id="found">
+								<a href="index.html">发现音乐</a>
+								<div id="triangle"></div>
+							</li>
+							<li><a href="myMusic.html">我的音乐</a></li>
+						</ul>
+						<input type="text" class="search" />
+						
+						<!-- <div th:text="${session.user}" 
+						 th:unless="${session.user== null}">[...]</div>
+						
+						< %
+							//判断是否登录，登录显示头像链接，否则显示登录链接
+							User user=(User)session.getAttribute("user");
+							if(user==null){
+						%>
+						<a href="/Music/home/login.jsp" class="login">登录</a>
+						<%
+							}else{
+							String defaultPath=application.getInitParameter("DEFAULT_IMG");
+						%>
+						<div id="img_outer">
+							<a href="/Music/home/myMusic.jsp" id="img"><img alt="用户头像" src="<%=(user.getImg()==null||user.getImg().trim().length()<=0)?defaultPath:user.getImg()%>"></a>
+							<div class="username"><%=user.getNickname() %></div>
+							<div id="logout">
+								<a href="/Music/UserServlet?action=logout">退出登录</a>
+							</div>
+						</div>
+						<%
+							}
+						%> -->
+					</div>
+					
+				</div>
+				<div class="top_center">
+					<ul>
+						<li><a href="/Music/home/index.jsp">推荐</a></li>
+						<li><a href="/Music/home/songList/songList.jsp">歌单</a></li>
+						<li><a href="/Music/home/singer/singer.jsp">歌手</a></li>
+						<li><a href="/Music/home/album/album.jsp">专辑</a></li>
+					</ul>
+				</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.ListCommentMapper">
+  <resultMap id="ListCommentResultMap" type="com.music.pojo.ListComment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="song_list_id" jdbcType="INTEGER" property="songListId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKeyListComment" parameterType="java.lang.Integer">
+    delete from list_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.music.pojo.ListComment">
+    insert into list_comment (id, song_list_id, user_id, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{songListId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeyListComment" parameterType="com.music.pojo.ListComment">
+    update list_comment
+    set song_list_id = #{songListId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKeyListComment" parameterType="java.lang.Integer" resultMap="ListCommentResultMap">
+    select id, song_list_id, user_id, content
+    from list_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllListComment" resultMap="ListCommentResultMap">
+    select id, song_list_id, user_id, content
+    from list_comment
+  </select>
+</mapper>

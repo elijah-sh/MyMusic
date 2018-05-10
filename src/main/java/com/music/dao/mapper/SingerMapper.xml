@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.SingerMapper">
+  <resultMap id="SingerResultMap" type="com.music.pojo.Singer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="small_img" jdbcType="VARCHAR" property="smallImg" />
+    <result column="big_img" jdbcType="VARCHAR" property="bigImg" />
+    <result column="letter" jdbcType="VARCHAR" property="letter" />
+    <result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+  </resultMap>
+  <delete id="deleteByPrimaryKeySinger" parameterType="java.lang.Integer">
+    delete from singer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSinger" parameterType="com.music.pojo.Singer">
+    insert into singer (id, name, sex, 
+      small_img, big_img, letter, 
+      intro)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{smallImg,jdbcType=VARCHAR}, #{bigImg,jdbcType=VARCHAR}, #{letter,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySinger" parameterType="com.music.pojo.Singer">
+    update singer
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      small_img = #{smallImg,jdbcType=VARCHAR},
+      big_img = #{bigImg,jdbcType=VARCHAR},
+      letter = #{letter,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKeySinger" parameterType="java.lang.Integer" resultMap="SingerResultMap">
+    select id, name, sex, small_img, big_img, letter, intro
+    from singer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllSinger" resultMap="SingerResultMap">
+    select id, name, sex, small_img, big_img, letter, intro
+    from singer
+  </select>
+</mapper>

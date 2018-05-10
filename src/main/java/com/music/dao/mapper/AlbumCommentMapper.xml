@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.AlbumCommentMapper">
+  <resultMap id="AlbumCommentResultMap" type="com.music.pojo.AlbumComment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="album_id" jdbcType="INTEGER" property="albumId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKeyAlbumComment" parameterType="java.lang.Integer">
+    delete from album_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertAlbumComment" parameterType="com.music.pojo.AlbumComment">
+    insert into album_comment (id, user_id, album_id, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{albumId,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeyAlbumComment" parameterType="com.music.pojo.AlbumComment">
+    update album_comment
+    set user_id = #{userId,jdbcType=INTEGER},
+      album_id = #{albumId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKeyAlbumComment" parameterType="java.lang.Integer" resultMap="AlbumCommentResultMap">
+    select id, user_id, album_id, content
+    from album_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllAlbumComment" resultMap="AlbumCommentResultMap">
+    select id, user_id, album_id, content
+    from album_comment
+  </select>
+</mapper>

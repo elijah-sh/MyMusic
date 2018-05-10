@@ -1,0 +1,223 @@
+#color {
+				width: 100%;
+				height: 1600px;
+				background-color: aliceblue;
+			}
+			
+			.center {
+				width: 940px;
+				height: 1600px;
+				border: 1px solid gainsboro;
+				margin: 0px auto;
+				background-color: white;
+			}
+			
+			.center .h1 {
+				float: left;
+				font-size: 23px;
+				font-weight: 400;
+				margin-top: 40px;
+				margin-left: 30px;
+				padding-bottom: 10px;
+			}
+			
+			.center .hr1 {
+				clear: both;
+				width: 94%;
+				margin: 0px auto;
+				color: red;
+			}
+			
+			.center dd a {
+				text-decoration: none;
+				color: black;
+				font-size: 14px;
+			}
+			
+			.center dd a:hover {
+				text-decoration: underline;
+			}
+			
+			.center dd .singer {
+				font-size: 13px;
+				color: gray;
+			}
+			
+			.center dt {
+				width: 160px;
+				height: 160px;
+				border: 1px solid gainsboro;
+				float: left;
+				margin-top: 20px;
+				margin-left: 21px;
+			}
+			
+			.center dd {
+				float: left;
+				margin-top: 190px;
+				margin-left: -160px;
+			}
+			
+			.center dd .singer {
+				float: left;
+				margin-top: 25px;
+			}
+			
+			.center dl {
+				float: left;
+				padding-bottom: 18px;
+			}
+			
+			.center .h2 {
+				clear: both;
+				float: left;
+				font-size: 23px;
+				font-weight: 400;
+				margin-top: 40px;
+				margin-left: 30px;
+				padding-bottom: 10px;
+			}
+			.center .catalog{
+				float: left;
+				margin-top: 45px;
+				margin-left: 10px;
+			}
+			.center .catalog li{
+				float: left;
+				list-style: none;
+				margin-left: 14px;
+				color: lightgray;
+			} 
+			.center .catalog li a{
+				font-size: 12px;
+				color: grey;
+				text-decoration: none;
+			}
+			.center .catalog li a:hover{
+				text-decoration: underline;
+			}
+			
+			.center .hr2 {
+				clear: both;
+				width: 94%;
+				margin: 0px auto;
+				color: red;
+			}
+			.center .page{
+				clear: both;
+				margin-left: 35%;
+				padding-top: 60px;
+			}
+			.center .page li{
+				width: 15px;
+				height: 20px;
+				float: left;
+				list-style: none;
+				color: lightgray;
+				border: 1px solid gray;
+				padding-left: 5px;
+				margin-left: 2px;
+				padding-bottom: 2px;
+			}
+			.center .page .li1{
+				background-color: red;
+			}
+			.center .page .uppage{
+				width: 40px;
+				padding-left: 30px;
+				background-image: url(img/button.png);
+				background-position: 0px -620px;
+			}
+			.center .page .uppage a{
+				color: gray;
+			}
+			.center .page .downpage{
+				width: 40px;
+				padding-right: 30px;
+				background-image: url(img/button.png);
+				background-position: 77px -560px;
+			}
+			.center .page .downpage:hover{
+				background-image: url(img/button.png);
+				background-position: 77px -590px;
+			}
+			.center .page li a{
+				text-align: center;
+				font-size: 12px;
+				color: black;
+				text-decoration: none;
+			}
+			.center .page .li1 a{
+				color: white;
+			}
+			.center .page .li2:hover{
+				border-color: black;
+			}
+			.bottom {
+				clear: both;
+				width: 100%;
+				height: 130px;
+				border: 1px solid gainsboro;
+				background-color: mintcream;
+			}
+			
+			.bottom .space {
+				clear: both;
+				float: left;
+				width: 12%;
+				height: 90px;
+			}
+			
+			.bottom .bottom_left {
+				float: left;
+				width: 23%;
+				height: 90px;
+				padding-top: 40px;
+			}
+			
+			.bottom .bottom_center {
+				float: left;
+				width: 23%;
+				height: 90px;
+				padding-top: 40px;
+			}
+			
+			.bottom .bottom_right {
+				float: left;
+				width: 35%;
+				height: 90px;
+				padding-top: 40px;
+			}
+			
+			.bottom li {
+				list-style: none;
+			}
+			
+			.bottom a {
+				text-decoration: none;
+				font-size: 13px;
+				color: black;
+			}
+			
+			.bottom .font2,
+			.bottom .font4,
+			.bottom .font5,
+			.bottom .font6 {
+				color: grey;
+			}
+			
+			.bottom .bottom_left .bottom_img1 {
+				float: left;
+				width: 45px;
+				height: 45px;
+				background-image: url(img/sprite.png);
+				background-position: -400px -80px;
+			}
+			
+			.bottom .bottom_center .bottom_img2 {
+				float: left;
+				width: 50px;
+				height: 50px;
+				background-image: url(img/sprite.png);
+				background-position: -400px -125px;
+			}

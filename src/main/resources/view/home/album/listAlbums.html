@@ -1,0 +1,44 @@
+
+<!-- 主页面有个跳转也在这   热专辑 -->
+
+
+<dl>
+<dt>列表标题</dt>
+<dd>列表内容</dd>
+<dd>列表内容</dd>
+...
+</dl>
+
+
+<%@page import="com.neteasemusic.www.entity.Album"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+	
+<%
+	List<Album> albums=(List<Album>)request.getAttribute("albums");
+	if(albums!=null){
+%>
+<dl>	
+<% 
+		for(Album album:albums){
+%>
+	<dt>
+		<a href="#"><img src="<%=album.getImg() %>" width="140px" heigth="140px"
+			title="<%=album.getName() %>" /></a></a>
+	<dd>
+		<a href="#"><%=album.getName() %></a>
+	</dd>
+	</dt>
+<%
+		}
+%>
+</dl>
+<% 
+	}else{
+%>
+	<p>暂时还没有专辑哦。</p>
+<%
+	}
+%>

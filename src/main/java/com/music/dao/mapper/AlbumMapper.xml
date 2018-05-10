@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.dao.AlbumMapper">
+  <resultMap id="AlbumResultMap" type="com.music.pojo.Album">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="release_time" jdbcType="DATE" property="releaseTime" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="singer_id" jdbcType="INTEGER" property="singerId" />
+    <result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+     <result column="sum_count" jdbcType="LONGVARCHAR" property="sumCount" />
+    
+  </resultMap>
+  <delete id="deleteByPrimaryKeyAlbum" parameterType="java.lang.Integer">
+    delete from album
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertAlbum" parameterType="com.music.pojo.Album">
+    insert into album (id, name, release_time, 
+      img, company, singer_id, 
+      intro)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{releaseTime,jdbcType=DATE}, 
+      #{img,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{singerId,jdbcType=INTEGER}, 
+      #{intro,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeyAlbum" parameterType="com.music.pojo.Album">
+    update album
+    set name = #{name,jdbcType=VARCHAR},
+      release_time = #{releaseTime,jdbcType=DATE},
+      img = #{img,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      singer_id = #{singerId,jdbcType=INTEGER},
+      intro = #{intro,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKeyAlbum" parameterType="java.lang.Integer" resultMap="AlbumResultMap">
+    select id, name, release_time, img, company, singer_id, intro
+    from album
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllAlbum" resultMap="AlbumResultMap">
+    select id, name, release_time, img, company, singer_id, intro
+    from album
+  </select>
+  
+  
+  
+   <select id="getHotAlbums" parameterType="java.lang.Integer" resultMap="AlbumResultMap">
+	    select album.*, sum(count) sum_count from album
+	  join song on song.album_id = album.id
+	  group by album.id order by sum_count desc
+	  limit  #{limit,jdbcType=INTEGER}
+  </select>
+  
+  
+				 
+  
+  
+</mapper>

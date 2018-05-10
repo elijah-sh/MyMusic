@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- <%@page import="com.neteasemusic.www.entity.Song"%>
+<%@page import="java.util.List"%> -->
+<!-- 这个是音乐播放器  就是左下角显示的 -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Love of music </title>
+<style>
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	#icontent{
+		width:100%;
+		height:100%;
+		margin:0px;
+		padding:0px;
+	}
+</style>
+<link href="/static/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
+<script th:src="@{/static/js/jquery.jplayer.min.js}"></script>
+      <script th:src="@{/static/js/jquery.jquery.jplayer.min.js}"></script>
+      <script th:src="@{/static/js/jquery.jplayer.playlist.min.js}"></script>
+</head>
+      
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	/* var scheme="<%=request.getScheme()%>";
+    var server="<%=request.getServerName()%>";
+    var port="<%=request.getServerPort()%>";
+    var prefix=scheme+"://"+server+":"+port;
+ */
+    var playList=new jPlayerPlaylist({
+        jPlayer: "#jquery_jplayer_1",
+        cssSelectorAncestor: "#jp_container_1"
+    }, [
+        <%
+        	List<Song> playList=(List<Song>)session.getAttribute("playList");
+        	int listSize=playList.size();
+        	for(int i=1;i<=listSize;i++){
+        		Song song=playList.get(i-1);
+        		if(i<=listSize-1){
+        %>
+        {
+            title:"<%=song.getName()%>",
+            artist:"<%=song.getAlbum().getSinger().getName()%>",
+            mp3:"<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%><%=song.getPath() %>",
+            poster: "<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%><%=song.getAlbum().getImg() %>"
+        },
+        <%		
+        		}else{
+        %>
+        {
+        	 title:"<%=song.getName()%>",
+             artist:"<%=song.getAlbum().getSinger().getName()%>",
+             mp3:"<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%><%=song.getPath() %>",
+             poster: "<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%><%=song.getAlbum().getImg() %>"
+        }
+        <%
+        		}
+        	}
+        %>
+        
+    ], {
+        swfPath: "swf",
+        supplied: "webmv, ogv, m4v, oga, mp3",
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        audioFullScreen: true
+    });
+    
+    
+});
+
+
+
+    $(function(){
+    	
+    	var flag=1;
+        //获取屏幕高度，使两个div都相对于body绝对定位
+        $("#jp_container_1").css({
+            "top":0+"px",
+            "z-index":"5"
+        });
+
+        $("#jquery_jplayer_1").css({
+           position:"absolute",
+            "top":10+"px",
+            "left":"-470px",
+            "width":"60px",
+            "height":"60px",
+            "z-index":"10"
+        });
+        
+        <%
+        	if(playList.size()>0){
+        %>
+        
+        
+        $(".jp-audio").css("left","0px");
+        $("#jquery_jplayer_1").css("left","10px");
+        flag=0;
+        <%
+        	}
+        %>
+        
+
+     
+
+        $("#jp_poster_0").css({
+            width:"60px",
+            height:"auto"
+        });
+
+        //控制列表显示隐藏
+        $(".jp-hide-list").click(function(){
+            $(".jp-playlist-holder").toggle();
+        });
+
+
+        
+        $(".tiebian").click(function(){
+
+            if(flag==1){
+                //滑动显示
+                var a= setInterval(function(){
+                    var left=$(".jp-audio").css("left");
+                    var left2=$("#jquery_jplayer_1").css("left");
+                    left=parseInt(left);
+                    left2=parseInt(left2);
+                    left+=10;
+                    left2+=10;
+                    if(left>=0){
+                        left=0;
+                        left2=10;
+                        clearInterval(a);
+                    }
+                    $(".jp-audio").css("left",left+"px");
+                    $("#jquery_jplayer_1").css("left",left2+"px");
+                },8);
+
+
+                $(this).html("&lt");
+                flag=0;
+            }else {
+                //滑动隐藏
+                var a = setInterval(function () {
+                    var left=$(".jp-audio").css("left");
+                    var left2=$("#jquery_jplayer_1").css("left");
+                    left=parseInt(left);
+                    left2=parseInt(left2);
+                    left-=10;
+                    left2-=10;
+                    if(left<=-480){
+                        left=-480;
+                        left2=-470;
+                        clearInterval(a);
+                    }
+                    $(".jp-audio").css("left",left+"px");
+                    $("#jquery_jplayer_1").css("left",left2+"px");
+                },8);
+                $(this).html("&gt");
+                flag=1;
+                }
+
+        });
+
+    });
+</script>
+<body>
+	
+	<!-- jplayer音乐播放器 -->
+	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+	<div class="jp-type-playlist">
+		<div class="jp-gui jp-interface">
+
+			<div class="jp-controls">
+                <div class="img">
+
+                </div>
+				<button class="jp-previous" role="button" tabindex="0">previous</button>
+				<button class="jp-play" role="button" tabindex="0">play</button>
+				<button class="jp-next" role="button" tabindex="0">next</button>
+				<button class="jp-stop" role="button" tabindex="0">stop</button>
+			</div>
+			<div class="jp-progress">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+			</div>
+			<div class="jp-time-holder">
+				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+			</div>
+			<div class="jp-toggles">
+				<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+				<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+			</div>
+
+            <!--控制列表显示和消失-->
+            <div class="jp-hide-list">
+                <div style="float:left;width: 30px;height:30px;overflow: hidden">
+                    <img src="/Music/image/list-icon.png" style="width: 30px;">
+                </div>
+                <div style="float: left;" id="listSize">
+                </div>
+            </div>
+
+            <!--控制贴边-->
+            <div class="tiebian">
+                &gt;
+            </div>
+
+		</div>
+
+        <div class="jp-playlist-holder">
+            <div class="jp-playlist">
+                <ul>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+        </div>
+		<div class="jp-no-solution">
+			<span>Update Required</span>
+			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>
